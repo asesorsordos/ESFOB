@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESFOB - Estudio de Formación Bautismal | IPUC</title>
+    <style>
+        :root {
+            --primary-blue: #0d47a1;
+            --secondary-blue: #1976d2;
+            --light-blue: #e3f2fd;
+            --accent-gold: #fbc02d;
+            --dark-text: #212121;
+            --light-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header h2 {
+            font-weight: 300;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .motto {
+            margin-top: 1rem;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        nav {
+            background-color: #fff;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-container a {
+            padding: 1rem 1.2rem;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-container a:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .credits-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-blue);
+        }
+
+        .credits-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .unit {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .unit-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1.2rem;
+        }
+
+        .unit-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .unit-target {
+            background-color: var(--light-blue);
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+            color: #0d47a1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .topic {
+            padding: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .topic:last-child {
+            border-bottom: none;
+        }
+
+        .topic-title {
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 0.3rem;
+        }
+
+        .lesson {
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-title {
+            color: var(--primary-blue);
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-box {
+            margin-bottom: 1rem;
+        }
+
+        .section-box h5 {
+            color: var(--dark-text);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .verse {
+            font-style: italic;
+            background-color: #fff9c4;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 0.2rem;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .nav-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ESFOB</h1>
+        <h2>Estudio de Formación Bautismal</h2>
+        <p>Un recorrido profundo por las verdades fundamentales del evangelio</p>
+        <div class="motto">Iglesia Pentecostal Unida de Colombia — "Un Señor, una fe, un bautismo"</div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#unidad1">Unidad 1: El Pecado</a>
+            <a href="#unidad2">Unidad 2: El Evangelio</a>
+            <a href="#unidad3">Unidad 3: Señorío de Cristo</a>
+            <a href="#unidad4">Unidad 4: El Amor de Dios</a>
+            <a href="#unidad5">Unidad 5: Consecuencias</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Ficha de Créditos / Presentación -->
+        <div class="credits-card">
+            <h3>Comisión de Estructura y Contenido</h3>
+            <div class="credits-grid">
+                <div>
+                    <strong>Jairo Graffe Brand</strong><br>
+                    <small>Director Misiones Nacionales 2025-2027</small>
+                </div>
+                <div>
+                    <strong>Fernando López Pimiento</strong><br>
+                    <small>Director Misiones Nacionales 2021-2024</small>
+                </div>
+                <div>
+                    <strong>Jose Hemerry Jiménez</strong><br>
+                    <small>Coordinador General Misiones Nacionales 2025-2027</small>
+                </div>
+                <div>
+                    <strong>Renso Fernández</strong><br>
+                    <small>Coordinador de Evangelismo Nacional 2025-2027</small>
+                </div>
+                <div>
+                    <strong>Andrés Molina</strong><br>
+                    <small>Coordinador de Capacitación Misionera 2025-2027</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNIDAD 1 -->
+        <section id="unidad1" class="unit">
+            <div class="unit-header">
+                <h2>Unidad 1: EL PECADO</h2>
+            </div>
+            <div class="unit-target">
+                <strong>Objetivo orientador:</strong> Describir las acciones y efectos producidos por el pecado en el ser humano.
+            </div>
+            <div class="topic">
+                <h3 class="topic-title">Tema 1: El Pecado</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: El pecado y sus consecuencias</h4>
+                    
+                    <div class="section-box">
+                        <h5>Objetivo:</h5>
+                        <p>Mostrar a la luz de la palabra de Dios, la problemática del pecado y el impacto en la vida del ser humano, para reconocer las decisiones que se deben tomar y ser libres de sus efectos.</p>
+                    </div>
+
+                    <div class="section-box">
+                        <h5>Definición:</h5>
+                        <p>Infracción de la ley <span class="verse">(1 Juan 3:4)</span>. Errar al blanco (<em>Amartema</em>) o traspasar una línea prohibida (<em>Parabasis</em>).</p>
+                    </div>
+
+                    <div class="section-box">
+                        <h5>Orientación Evangelística:</h5>
+                        <p>El convencimiento del Espíritu Santo <span class="verse">(Juan 16:8-11)</span> revela la necesidad humana manifestada en Romanos 3:10-18.</p>
+                    </div>
+
+                    <div class="section-box">
+                        <h5>Consecuencias del Pecado:</h5>
+                        <ul>
+                            <li><strong>Muerte Espiritual:</strong> Rompimiento del pacto <span class="verse">(Génesis 2:17)</span>. Solución: Nacer de nuevo.</li>
+                            <li><strong>Muerte Física:</strong> Separación del mundo terrenal.</li>
+                            <li><strong>Muerte Eterna:</strong> Separación definitiva de Dios (Muerte segunda, <span class="verse">Apocalipsis 20:11-14</span>).</li>
+                            <li>Enfermedades <span class="verse">(Juan 5:14)</span>.</li>
+                            <li>Esclavitud <span class="verse">(Juan 8:34)</span>.</li>
+                            <li>Destituido de la gloria de Dios <span class="verse">(Romanos 3:23)</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIDAD 2 -->
+        <section id="unidad2" class="unit">
+            <div class="unit-header">
+                <h2>Unidad 2: EL EVANGELIO</h2>
+            </div>
+            <div class="unit-target">
+                <strong>Objetivo orientador:</strong> Evidenciar los sucesos contenidos en la enseñanza del evangelio y sus efectos en la vida del ser humano <span class="verse">(1 Corintios 15:1-8)</span>.
+            </div>
+            
+            <!-- Tema 1: La Muerte -->
+            <div class="topic">
+                <h3 class="topic-title">Tema 1: La Muerte</h3>
+                
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: La gracia</h4>
+                    <p>Favor inmerecido otorgado por Dios a través de Cristo Jesús <span class="verse">(Efesios 2:8-9, Tito 2:11-12)</span>.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 2: La fe</h4>
+                    <p>La certeza de lo que se espera, la convicción de lo que no se ve <span class="verse">(Hebreos 11:1)</span>. Canal indispensable para recibir la gracia.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 3: La redención</h4>
+                    <p>El rescate y liberación del pecado a precio de sangre a través del sacrificio de Jesús <span class="verse">(1 Timoteo 2:6)</span>.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 4: La propiciación</h4>
+                    <p>El sacrificio que satisface la justicia divina y abre la puerta al perdón <span class="verse">(Romanos 3:25)</span>.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 5: El arrepentimiento</h4>
+                    <p>Cambio radical de mente y actitud que aparta al hombre del pecado <span class="verse">(Hechos 3:19)</span>.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 6: La justificación</h4>
+                    <p>El acto jurídico de Dios al declarar justo al creyente mediante la fe <span class="verse">(Romanos 5:1)</span>.</p>
+                </div>
+
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 7: La conversión</h4>
+                    <p>Acción voluntaria de volverse del pecado hacia Dios adoptando una nueva conducta <span class="verse">(Isaías 55:6-7)</span>.</p>
+                </div>
+            </div>
+
+            <!-- Tema 2: La Sepultura -->
+            <div class="topic">
+                <h3 class="topic-title">Tema 2: La Sepultura</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: El bautismo en el nombre de Jesús</h4>
+                    <p>Inmersión en agua como ordenanza del Señor para el perdón de los pecados y requisito de salvación <span class="verse">(Hechos 2:38, Marcos 16:16)</span>.</p>
+                </div>
+            </div>
+
+            <!-- Tema 3: La Resurrección -->
+            <div class="topic">
+                <h3 class="topic-title">Tema 3: La Resurrección</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: El nuevo nacimiento</h4>
+                    <p>Proceso espiritual en el cual se nace del agua y del Espíritu para iniciar una nueva vida en Cristo <span class="verse">(Juan 3:5-7)</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIDAD 3 -->
+        <section id="unidad3" class="unit">
+            <div class="unit-header">
+                <h2>Unidad 3: EL SEÑORÍO DE CRISTO</h2>
+            </div>
+            <div class="unit-target">
+                <strong>Objetivo orientador:</strong> Explicar en qué consiste el Señorío de Cristo, sus beneficios y las consecuencias al rechazarlo.
+            </div>
+            <div class="topic">
+                <h3 class="topic-title">Tema 1: El Señorío de Cristo</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: Jesús es el Señor</h4>
+                    <p>Reconocer a Jesús como dueño y autoridad suprema en la vida del creyente a través de la obediencia por el Espíritu Santo <span class="verse">(1 Corintios 12:3)</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIDAD 4 -->
+        <section id="unidad4" class="unit">
+            <div class="unit-header">
+                <h2>Unidad 4: EL AMOR DE DIOS</h2>
+            </div>
+            <div class="unit-target">
+                <strong>Objetivo orientador:</strong> Explicar las dimensiones de la benignidad en función de la salvación.
+            </div>
+            <div class="topic">
+                <h3 class="topic-title">Tema 1: El Amor</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: La benignidad que guía al arrepentimiento</h4>
+                    <p>Reconocer el amor y la paciencia de Dios como el motor fundamental que conduce a la conversión <span class="verse">(Romanos 2:4)</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIDAD 5 -->
+        <section id="unidad5" class="unit">
+            <div class="unit-header">
+                <h2>Unidad 5: CONSECUENCIAS DE RECHAZAR EL EVANGELIO</h2>
+            </div>
+            <div class="unit-target">
+                <strong>Objetivo orientador:</strong> Describir a través de las escrituras que quien no cree en Cristo está perdido y bajo condenación <span class="verse">(Juan 3:18)</span>.
+            </div>
+            <div class="topic">
+                <h3 class="topic-title">Tema 1: La Condenación</h3>
+                <div class="lesson">
+                    <h4 class="lesson-title">Lección 1: Consecuencias de vivir sin Cristo</h4>
+                    <p>Enseñar la condición de pérdida eterna y separación de Dios de quienes rehusen creer en el mensaje de salvación <span class="verse">(Juan 3:36)</span>.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><strong>Ruta Evangelística - ESFOB</strong></p>
+        <small>Misiones Nacionales — Iglesia Pentecostal Unida de Colombia</small>
+    </footer>
+<!-- Registro del Service Worker adaptado para GitHub Pages -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Registrar usando ruta relativa simple
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => console.log('Service Worker registrado en:', reg.scope))
+                    .catch((err) => console.log('Error en Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
